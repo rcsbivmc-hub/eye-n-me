@@ -1,0 +1,7 @@
+{
+  "name": "IdeaFlow - Intelligent Idea Recorder",
+  "description": "A sophisticated tool to capture, organize, and enhance your thoughts using voice transcription, AI-powered insights, and a seamless knowledge bank interface.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
