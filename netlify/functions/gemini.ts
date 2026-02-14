@@ -1,7 +1,7 @@
 
-const { GoogleGenAI } = require("@google/genai");
+import { GoogleGenAI } from "@google/genai";
 
-exports.handler = async (event, context) => {
+export const handler = async (event: any, context: any) => {
     // Only allow POST
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
@@ -63,10 +63,10 @@ exports.handler = async (event, context) => {
             });
 
             const text = response.text;
-            const sources = response.candidates?.[0]?.groundingMetadata?.groundingChunks?.map((chunk) => ({
+            const sources = response.candidates?.[0]?.groundingMetadata?.groundingChunks?.map((chunk: any) => ({
                 title: chunk.web?.title || 'External Source',
                 uri: chunk.web?.uri || '#',
-            })).filter((s) => s.uri !== '#') || [];
+            })).filter((s: any) => s.uri !== '#') || [];
 
             return {
                 statusCode: 200,
@@ -76,7 +76,7 @@ exports.handler = async (event, context) => {
 
         return { statusCode: 400, body: "Invalid action" };
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("Function error:", error);
         return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
     }
