@@ -1,5 +1,5 @@
 // Netlify Serverless Function to securely handle Gemini API web search calls
-import { GoogleGenerativeAI } from '@google/genai';
+import { GoogleGenAI } from '@google/genai';
 
 export async function handler(event, context) {
     // Only allow POST requests
@@ -43,7 +43,7 @@ export async function handler(event, context) {
             };
         }
 
-        const genAI = new GoogleGenerativeAI(apiKey);
+        const genAI = new GoogleGenAI({ apiKey });
         const model = genAI.getGenerativeModel({
             model: 'gemini-2.0-flash-exp',
             tools: [{ googleSearch: {} }]
